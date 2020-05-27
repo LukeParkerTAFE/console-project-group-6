@@ -15,9 +15,15 @@ const getRANDOMcenter = function() {
     return RANDOM_CENTER_NAME[Math.floor(Math.random() * RANDOM_CENTER_NAME.length)];
 }
 
+const getPostion = function(){
+    const RANDOM_POSTION = ["CSR","DSR","Coordinator","Concierge"];
+    return RANDOM_POSTION[Math.floor(Math.random() * RANDOM_POSTION.length)];
+}
+
 module.exports = {
     getRandomGivenName,
     getRandomFamilyName,
     getRandomNumber,
-    getRANDOMcenter
+    getRANDOMcenter,
+    getPostion
 }
