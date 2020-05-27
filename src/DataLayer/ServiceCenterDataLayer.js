@@ -31,7 +31,7 @@ module.exports = class ServiceCenterDataLayer
         
     }
     // WARNING
-    writeToFile(number) //20
+    writeToFile(number)
     {   
         fs.writeFileSync(this.FileName,JSON.stringify(ServiceCenter.getRandomServiceCenter(number)));
     }
