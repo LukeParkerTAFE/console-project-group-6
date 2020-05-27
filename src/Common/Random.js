@@ -12,7 +12,7 @@ const getRandomNumber = max => Math.floor(Math.random() * max);
 const getRANDOMcenter = function() {
     const RANDOM_CENTER_NAME = ["Marrickville", "Bankstown" , "Liverpool" , "Burwood" ,"Castle Hill ", "Chatswood " , "Goulburn" , "Haymarke"];
 
-    return RAMDOM_CENTERE_NAME[Math.floor(Math.random() * RANDOM_CENTER_NAME.length)];
+    return RANDOM_CENTER_NAME[Math.floor(Math.random() * RANDOM_CENTER_NAME.length)];
 }
 
 module.exports = {
