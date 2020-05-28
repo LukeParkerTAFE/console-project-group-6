@@ -1,30 +1,18 @@
 [
     {
-        "name": "Goulburn",
-        "number": 445
+        "name": "Chatswood ",
+        "number": 307
     },
     {
-        "name": "Burwood",
-        "number": 535
+        "name": "Goulburn",
+        "number": 256
+    },
+    {
+        "name": "Liverpool",
+        "number": 199
     },
     {
         "name": "Marrickville",
-        "number": 416
-    },
-    {
-        "name": "Chatswood ",
-        "number": 116
-    },
-    {
-        "name": "Bankstown",
-        "number": 478
-    },
-    {
-        "name": "Haymarke",
-        "number": 112
-    },
-    {
-        "name": "Castle Hill ",
-        "number": 381
+        "number": 109
     }
 ]

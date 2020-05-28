@@ -1,6 +1,6 @@
 
 const fs = require("fs");
-const ServiceCenter = require("../Moodels/ServiceCenter")
+const ServiceCenter = require("../Models/ServiceCenter")
 module.exports = class ServiceCenterDataLayer
 {
     constructor(FileName)
@@ -29,6 +29,11 @@ module.exports = class ServiceCenterDataLayer
         cervicecenterarray.push(serviceCenter);
         this.writeArrayIntoFile(cervicecenterarray);
         
+    }
+
+    getCenterNumber()
+    {
+        return this.getServiceCenter().map(c => c.number);
     }
     // WARNING
     writeToFile(number)
