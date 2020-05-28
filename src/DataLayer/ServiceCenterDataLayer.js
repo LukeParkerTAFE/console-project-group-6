@@ -22,15 +22,43 @@ module.exports = class ServiceCenterDataLayer
         fs.writeFileSync(this.FileName,JSON.stringify(servicecenter));
     }   
 
+    searchByNumber(centernumber)
+    {
+        return this.getServiceCenter().find(c => c.number == centernumber);
+    }
     addServiceCenter(serviceCenter)
     {
-        let cervicecenterarray= this.getServiceCenter();
+        // let cervicecenterarray= this.getServiceCenter();
         
-        cervicecenterarray.push(serviceCenter);
-        this.writeArrayIntoFile(cervicecenterarray);
+        // cervicecenterarray.push(serviceCenter);
+        // this.writeArrayIntoFile(cervicecenterarray);
+        this.writeArrayIntoFile(this.getServiceCenter().concat([serviceCenter]));
         
     }
 
+    deleteServiceCenter(number) 
+    {
+
+        this.writeArrayIntoFile(this.getServiceCenter().filter(c => c.numer != number));
+    }
+                      
+    updateServiceCenter(servicecenter) 
+    {
+        this.writeArrayIntoFile(this.getServiceCenter().map(s => {
+            if(s.number == serviceCenter.number)
+            {
+                return serviceCenter;
+            }
+            else{
+                return s;
+            }
+        }));
+    }
+
+    searchByName(centername)
+    {
+        return this.getServiceCenter().find(s => s.name == centername);
+    }
     getCenterNumber()
     {
         return this.getServiceCenter().map(c => c.number);

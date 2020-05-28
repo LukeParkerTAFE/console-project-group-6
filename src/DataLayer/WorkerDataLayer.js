@@ -25,7 +25,39 @@ module.exports = class WorkerDataLayer
         fs.writeFileSync(this.fileName,JSON.stringify(worker));
     }
 
+    addWorker(worker)
+    {
+        // let workerarray = this.getArrayFromFile();
+        // workerarray.push(worker);
+        // this.writeArrayIntoFile(workerarray);
+        this.writeArrayIntoFile(this.getArrayFromFile().concat(worker));
+    }
 
+    deleteWorker(stuffnumber)
+    {
+        this.writeArrayIntoFile(this.getArrayFromFile().filter(w => w.stuffnumber != stuffnumber));
+    }
+
+    updateworker(worker)
+    {
+        this.writeArrayIntoFile(this.getArrayFromFile().map(w => {
+            if(w.stuffnumber == worker.stuffnumber)
+            {   
+                return worker;
+            }else{
+                return w;
+            }
+        }));
+    }
+
+    findWorkerByStuffNumber(stuffnumber)
+    {
+        return this.getArrayFromFile().find(w => w.stuffnumber == stuffnumber);
+    }
+    searchByName(name)
+    {
+        return this.getArrayFromFile().map(w => `${w.firsName} ${w.lastName}`.toLowerCase().includes(name));
+    }
     //warning
     writeToFile(number,cervicenumbers)
     {
