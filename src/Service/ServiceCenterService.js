@@ -17,6 +17,7 @@ module.exports = class ServiceCenterService {
         }
         else {
             this.servicecenterdatalayer.addServiceCenter(newservicecenter);
+            console.log("\nService Center has been Added");
         }
         
     }
@@ -34,13 +35,9 @@ module.exports = class ServiceCenterService {
     }
 
     deleteServiceCenter(centernumber) {
-        let servicecenter = this.servicecenterdatalayer.searchByNumber(centernumber);
-        if (servicecenter) {
-            this.servicecenterdatalayer.deleteServiceCenter(centernumber);
-        }
-        else {
-            console.log("Center is not Exist.");
-        }
+    
+        this.servicecenterdatalayer.deleteServiceCenter(centernumber);
+       
     }
 
     updateServiceCenter(newservicecenter)
@@ -57,7 +54,7 @@ module.exports = class ServiceCenterService {
     searchByName(centername)
     {
         let centerarray =  this.servicecenterdatalayer.searchByName(centername);
-
+        
         if(centerarray.length == 0)
         {
             console.log("No Matching...");

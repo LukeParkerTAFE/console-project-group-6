@@ -36,18 +36,18 @@ module.exports = class ServiceCenterDataLayer
         
     }
 
-    deleteServiceCenter(number) 
+    deleteServiceCenter(centernumber) 
     {
 
-        this.writeArrayIntoFile(this.getServiceCenter().filter(c => c.numer != number));
+        this.writeArrayIntoFile(this.getServiceCenter().filter(c => c.number != centernumber));
     }
                       
     updateServiceCenter(servicecenter) 
     {
         this.writeArrayIntoFile(this.getServiceCenter().map(s => {
-            if(s.number == serviceCenter.number)
+            if(s.number == servicecenter.number)
             {
-                return serviceCenter;
+                return servicecenter;
             }
             else{
                 return s;
@@ -57,7 +57,8 @@ module.exports = class ServiceCenterDataLayer
 
     searchByName(centername)
     {
-        return this.getServiceCenter().find(s => s.name == centername);
+        
+        return this.getServiceCenter().filter(s => s.name.toLowerCase().includes(centername));
     }
     getCenterNumber()
     {

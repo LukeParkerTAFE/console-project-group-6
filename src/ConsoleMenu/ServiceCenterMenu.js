@@ -17,14 +17,48 @@ async function addServiceCenter()
 {
     let servicecentername = await askQuestion("Enter service center name: ");
     let servicecenternumber = await askQuestion("Enter service center number: ");
+    servicecenternumber = parseInt(servicecenternumber);
     let servicecenter = new ServiceCenter(servicecentername,servicecenternumber);
     _servicecenterservice.addServiceCenter(servicecenter);
+    
 }
 
+async function searchforservicecenter()
+{
+    let inputname = await askQuestion("Enter the name: ");
+    inputname = inputname.toLowerCase();
+    let servicenames =_servicecenterservice.searchByName(inputname);
+    let selectedservicecenter;
+    
+    if(servicenames == undefined)
+    {
+        console.log("Error: No Center");
+    }
+    else if(servicenames.length > 1)
+    {
+        console.log(servicenames);
+        let number = await askQuestion("please enter service number: ");
+        selectedservicecenter = servicenames.find(n => n.number == number);
+        console.log(selectedservicecenter);
+        return selectedservicecenter;
+    }
+    else
+    {
+        selectedservicecenter = servicenames[0];
+        console.log(selectedservicecenter);
+        return selectedservicecenter;
+    }
+}
+
+async function deleteCenter(center)
+{
+    _servicecenterservice.deleteServiceCenter(center.number);
+    console.log("Center has been deleted..");
+}
 async function ServiceCenterMenu()
 {
     let shouldloop = true;
-
+    let selectecenter;
     while(shouldloop)
     {
 
@@ -43,12 +77,34 @@ async function ServiceCenterMenu()
                 await addServiceCenter();
                 break;
             case "2":
+                await searchforservicecenter();
                 break;
             case "3":
+                selectecenter = await searchforservicecenter();
+                if(selectecenter == undefined)
+                {
+                    break;
+                }
+                await deleteCenter(selectecenter);
                 break;
             case "4":
+                selectecenter= await searchforservicecenter();
+                if(selectecenter == undefined)
+                {
+                    break;
+                }
+                let newservicecentername = await askQuestion("Please enter the new center name: ");
+                selectecenter.name=newservicecentername ;
+                _servicecenterservice.updateServiceCenter(selectecenter);
+                console.log("the center name has been updated..");
                 break;
             case "5":
+                selectecenter= await searchforservicecenter();
+                if(selectecenter == undefined)
+                {
+                    break;
+                }
+                console.log(_servicecenterservice.listofworkers(selectecenter.number));
                 break;
             case "6":
                 shouldloop = false;

@@ -12,7 +12,7 @@ module.exports = class WorkerDataLayer
     getArrayFromFile()
     {
         return JSON.parse(fs.readFileSync(this.fileName).toString()).map(w => new Worker(
-            w.firsName,
+            w.firstName,
             w.lastName,
             w.age,
             w.postion,
