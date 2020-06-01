@@ -62,7 +62,7 @@ async function ServiceCenterMenu()
     while(shouldloop)
     {
 
-        console.log("\t\t Service Center Menue");
+        
         console.log("[1] Add Service Center.");
         console.log("[2] Search for Service Center.");
         console.log("[3] Delete Service Center.");

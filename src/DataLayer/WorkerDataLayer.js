@@ -16,7 +16,8 @@ module.exports = class WorkerDataLayer
             w.lastName,
             w.age,
             w.postion,
-            w.centerNumber
+            w.centerNumber,
+            w.stuffnumber
         ));
     }
 
@@ -33,9 +34,10 @@ module.exports = class WorkerDataLayer
         this.writeArrayIntoFile(this.getArrayFromFile().concat(worker));
     }
 
-    deleteWorker(stuffnumber)
+    deleteWorker(newstuffnumber)
     {
-        this.writeArrayIntoFile(this.getArrayFromFile().filter(w => w.stuffnumber != stuffnumber));
+        this.writeArrayIntoFile(this.getArrayFromFile().filter(w => w.stuffnumber != newstuffnumber));
+        
     }
 
     updateworker(worker)
@@ -56,7 +58,7 @@ module.exports = class WorkerDataLayer
     }
     searchByName(name)
     {
-        return this.getArrayFromFile().map(w => `${w.firsName} ${w.lastName}`.toLowerCase().includes(name));
+        return this.getArrayFromFile().filter(w => `${w.firstName} ${w.lastName}`.toLowerCase().includes(name));
     }
     //warning
     writeToFile(number,cervicenumbers)

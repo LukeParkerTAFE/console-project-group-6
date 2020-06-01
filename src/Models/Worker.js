@@ -1,9 +1,9 @@
-const { v4 } = require("uuid");
+const  uuid  = require("uuid");
 const Random = require("../Common/Random");
 
 
 module.exports = class Worker {
-    constructor(firstName, lastName, age, postion, centerNumber, stuffnumber = v4()) {
+    constructor(firstName, lastName, age, postion, centerNumber, stuffnumber = uuid.v4()) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -15,7 +15,6 @@ module.exports = class Worker {
     getinfo() {
         return `worker : ${this.firstName} ${this.lastName} is ${this.age} `;
     }
-
 
     static getRandomWorker(number, centerNumber) {
 
